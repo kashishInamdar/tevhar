@@ -1,0 +1,30 @@
+.card-container{
+    width: 50%;
+    background-color: #fff;
+    border-radius: 6px;
+    box-shadow: 0 0 5px 2px rgb(182, 182, 164);
+    padding: 5px 10px;
+    margin: 10px auto;
+    position: relative;
+}
+.form-text{
+    position: absolute;
+    right: 10px;
+    bottom: 10px;
+}
+.them-1{
+    background-color: #00DBDE;
+background-image: linear-gradient(90deg, #00DBDE 0%, #FC00FF 100%);
+}
+.them-2{
+    background-color: #de8eec;
+background-image: linear-gradient(45deg, #de8eec 0%, #9599E2 50%, #5bc0f5 100%);
+}
+
+
+@media screen and (max-width : 768px){
+    .card-container{
+        width: 80%;
+    }
+    
+}
