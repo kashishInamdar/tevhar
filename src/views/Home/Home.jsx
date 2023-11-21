@@ -20,7 +20,7 @@ const GREETINGS = [
 function Home() {
     const [searchParams] = useSearchParams();
 
-    const [to, setTo] = useState(searchParams.get(""));
+    const [to, setTo] = useState(searchParams.get("to"));
 
     const [from, setFrom] = useState(searchParams.get("from"));
 
