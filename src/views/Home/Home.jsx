@@ -1,5 +1,10 @@
 import { useSearchParams } from "react-router-dom";
 import "./Home.css"
+import Stars from "./image/lights.png"
+import Lamp from "./image/lamp.png"
+import Diya from "./image/diya.png"
+import Rangoli from "./image/rangoli.gif"
+import { useState } from "react";
 
 
 const GREETINGS = [
@@ -12,27 +17,80 @@ const GREETINGS = [
     "दिव्यांच्या रोषणाईने उजळून जावं अंगण, फटाक्यांच्या आवाजाने आसमंत जावा भरून, अशीच यावी दिवाळी सर्वांकडे, सगळीकडे असावा आनंदाचा मौसम."
 ];
 
-function Home(){
+function Home() {
     const [searchParams] = useSearchParams();
 
-    const to =searchParams.get("to");
-    const from = searchParams.get("from");
+    const [to, setTo] = useState(searchParams.get(""));
 
-    const greetingNumber= searchParams.get("g") >= GREETINGS.length ? 0 : searchParams.get("g") || 0 ;
+    const [from, setFrom] = useState(searchParams.get("from"));
 
-    const themeNumber = searchParams.get("t")
-    return(
+    const [greetingNumber, setGeetingNumber] = useState(searchParams.get("g") >= GREETINGS.length ? 0 : searchParams.get("g") || 0);
+
+    const [themeNumber, setThemeNumber] = useState(searchParams.get("t"));
+    return (
         <div>
-             <div className={`card-container ${`them-${themeNumber}`}`}>
-            <span>Dear {to} 💐</span>
-            <p>
-                {GREETINGS[greetingNumber]}
-            </p>
-            <br />
-            <br />
-            <br />
-            <span className="form-text">🙏 एकी अपनी {from}</span>
+            <div className={`card-container ${`them-${themeNumber}`}`}>
+                <div>
+
+                </div>
+                <img src={Stars} className="stars-l" />
+                <img src={Stars} className="stars-r" />
+
+                <span className="dear">Dear {to} 💐</span>
+
+                <p>
+                    {GREETINGS[greetingNumber]}
+                </p>
+                <br />
+                <br />
+                <img className="rangoli" src={Rangoli} />
+                <span className="form-text"> आपकी अपनी {from} <img src={Diya} className="diya" /> </span>
             </div>
+            <div className="input-container">
+                <input type="text"
+                    className="input"
+                    placeholder="to"
+                    value={to}
+                    onChange={(e) => {
+                        setTo(e.target.value)
+                    }}
+                />
+                <input type="text"
+                    className="input"
+                    placeholder="from"
+                    value={from}
+                    onChange={(e) => {
+                        setFrom(e.target.value)
+                    }}
+                />
+                <select
+                    className="input"
+                    value={greetingNumber}
+                    onChange={(e) => {
+                        setGeetingNumber(e.target.value)
+                    }}>
+                    <option value="0"> Greating 1</option>
+                    <option value="1"> Greating 2</option>
+                    <option value="2"> Greating 3</option>
+                    <option value="3"> Greating 4</option>
+                </select>
+
+                <select
+                    className="input"
+                    value={themeNumber}
+                    onChange={(e) => {
+                        setThemeNumber(e.target.value)
+                    }}>
+                    <option value="0"> None</option>
+                    <option value="1"> Theme 1</option>
+                    <option value="2"> Theme 2</option>
+                    <option value="3"> Theme 3</option>
+                    <option value="4"> Theme 4</option>
+                </select>
+            </div>
+
+
+            <p>{import.meta.env.VITE_BASE_URL}?to={to}&from={from}&g={greetingNumber}&t={themeNumber} </p>
         </div>
     )
 }
