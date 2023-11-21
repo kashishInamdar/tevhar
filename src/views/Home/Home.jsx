@@ -46,6 +46,14 @@ function Home() {
                 <img className="rangoli" src={Rangoli} />
                 <span className="form-text"> आपकी अपनी {from} <img src={Diya} className="diya" /> </span>
             </div>
+
+            <p className="create-your-own">Do you want to create your own Greeting ? Customize it here👇</p>
+
+            <p className="url">
+                {import.meta.env.VITE_BASE_URL}?to={to}&from={from}&g={greetingNumber}&t={themeNumber} 
+            </p>
+
+
             <div className="input-container">
                 <input type="text"
                     className="input"
@@ -90,7 +98,6 @@ function Home() {
             </div>
 
 
-            <p>{import.meta.env.VITE_BASE_URL}?to={to}&from={from}&g={greetingNumber}&t={themeNumber} </p>
         </div>
     )
 }
